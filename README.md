@@ -1,16 +1,14 @@
 # ggillustrate
 
-**ggillustrate** is an R package that transforms your `ggplot2` charts into AI-generated illustrations. By converting standard plots into metaphor-rich visuals (like coins, rockets, or mountains), we aim to make data communication more expressive, engaging, and accessible — especially for educators, content marketers, and visual storytellers.
+**ggillustrate** is an R package that transforms your `ggplot2` charts into AI-generated illustrations. By converting standard plots into metaphor-rich visuals (like coins, rockets, or mountains), we aim to make data communication more expressive, engaging, and accessible without losing information.
 
 ## 🌟 Project Motivation
 
-Traditional data visualizations are powerful but often fall short in capturing emotional or metaphorical depth. `ggillustrate` bridges the gap between statistical graphics and visual storytelling using:
+Traditional data visualizations are powerful but often fall short in capturing emotional or metaphorical depth. `ggillustrate` attempts to combine statistical graphics and visual storytelling using:
 
 - Sketch generation via edge detection (OpenCV)
 - AI-based sketch-to-image translation (e.g., ControlNet via Replicate API)
 - Seamless integration with the R ecosystem
-
-This project is a creative proof-of-concept showing how AI and data visualization can co-evolve in modern communication tools.
 
 ## 🚀 Features
 
