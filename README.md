@@ -49,6 +49,3 @@ This project is a creative proof-of-concept showing how AI and data visualizatio
 All code and documentation will be maintained at:  
 [https://github.com/ancan203/ggillustrate](https://github.com/ancan203/ggillustrate)
 
----
-
-> Let your charts tell stories beyond numbers.
