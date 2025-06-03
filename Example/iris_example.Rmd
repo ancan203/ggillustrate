@@ -1,0 +1,69 @@
+---
+title: "ggillustrate Example: Iris Dataset with Edge Detection"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Ensure required packages are installed and loaded
+if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+
+devtools::load_all()
+
+library(ggplot2)
+```
+
+## Original ggplot2 Chart (Iris Dataset)
+
+This plot shows the relationship between Sepal Length and Petal Length for the three Iris species.
+
+```{r plot-original-iris}
+p_iris <- ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+  geom_point(size = 3) +
+  labs(title = "Iris Sepal Length vs. Petal Length",
+       x = "Sepal Length (cm)",
+       y = "Petal Length (cm)",
+       color = "Species") +
+  theme_minimal()
+
+p_iris
+```
+
+## Edge-Detected Illustration with illustrate_edges
+
+Now, we use the `illustrate_edges` function from the `ggillustrate` package to create a sketch-like version of the Iris plot.
+
+```{r edge-illustration-iris}
+# Define the output path
+output_image_path <- "iris_edges_illustration.png"
+
+# Edge detecion
+tryCatch({
+  illustrate_edges(plot = p_iris, out_path = output_image_path)
+  cat(paste("Edge-detected image saved to:", output_image_path, "\n"))
+}, error = function(e) {
+  cat(paste("Error generating edge illustration:", e$message, "\n"))
+})
+
+# Optionally, display the generated image if the file exists
+if (file.exists(output_image_path)) {
+  knitr::include_graphics(output_image_path)
+} else {
+  cat("Output image not found.")
+}
+```
+
+
+# Visualize the image using our gg_illustrate
+
+```{r ai-illustration}
+# Make sure your OPENAI_API_KEY is set in .Renviron or pass it directly
+gg_illustrate(
+  plot = output_image_path,
+  themes = "sectosa, versicolor, verginica",
+  out_path = "diamond_output.png",
+  size = "1024x1024",
+  openai_api_key = "Your OpenAPI key"
+)
+```
