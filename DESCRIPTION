@@ -1,11 +1,23 @@
-Package: project
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Package: ggillustrate
+Title: AI-Powered Chart Transformation
+Version: 0.0.0.1000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    c(
+    person("Nguyen", "Tuan Hiep", email = "nguyen.tuanhiep@example.com", role = c("aut", "cre"")),
+    person("Can", "Ha An", email = "21an.ch@vinuni.edu.vn", role = "aut"),
+    person("Pham", "Minh Hieu", email = "pham.minhhieu@example.com", role = "aut")
+    )
+Description: Transforms ggplot2 charts into AI-generated illustrated visuals while 
+    preserving statistical relationships. Uses OpenAI's image editing capabilities 
+    to enhance data visualizations with metaphorical and artistic elements, making 
+    data communication more engaging and accessible without compromising analytical 
+    integrity. Seamlessly integrates with existing ggplot2 workflows through a 
+    single function call.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
