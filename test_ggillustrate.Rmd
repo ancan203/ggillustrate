@@ -1,0 +1,44 @@
+---
+title: "Test AI Chart with gg_illustrate (Line Chart Finance)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+devtools::load_all()  # Load your local package
+```
+
+## 📈 Line Chart of Simulated Account Balance Over Time
+
+```{r plot-line}
+# Simulated time-series finance data
+set.seed(123)
+finance_line_df <- data.frame(
+  day = 1:30,
+  balance = cumsum(rnorm(30, mean = 200, sd = 100))
+)
+
+# Line chart
+p <- ggplot(finance_line_df, aes(x = day, y = balance)) +
+  geom_line(color = "#1f77b4", size = 1.5) +
+  geom_point(color = "#1f77b4", size = 2) +
+  labs(title = "Account Balance Over Time",
+       x = "Day",
+       y = "Balance (USD)") +
+  theme_minimal()
+
+p
+```
+
+## 🎨 AI-enhanced Illustration with Line & Finance Theme
+
+```{r ai-illustration}
+# Generate metaphor-enhanced image using gg_illustrate
+gg_illustrate(
+  plot = p,
+  themes = "cash, coins",
+  out_path = "ai_output_line_chart.png",
+  size = "1024x1024",
+  openai_api_key = "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"
+)
+```
