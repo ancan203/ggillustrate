@@ -1,0 +1,71 @@
+---
+title: "ggillustrate with diamonds dataset"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Ensure required packages are installed and loaded
+devtools::load_all()
+if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+
+
+library(ggplot2)
+```
+
+## Standard ggplot2 Chart (Diamonds Dataset)
+
+```{r plot-original-diamonds}
+# Using a subset for potentially faster rendering in Rmd, but can use full dataset
+# diamonds_subset <- diamonds[sample(nrow(diamonds), 5000), ]
+
+p_diamonds <- ggplot(diamonds, aes(x = cut, fill = cut)) +
+  geom_bar() +
+  labs(title = "Distribution of Diamond Cuts",
+       x = "Cut Quality",
+       y = "Count",
+       fill = "Cut") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Improve label readability
+
+p_diamonds
+```
+
+
+## Edge-Detected Illustration with illustrate_edges
+
+Now, we use the `illustrate_edges` function from the `ggillustrate` package to create a sketch-like version of the Iris plot.
+
+```{r edge-illustration-iris}
+# Define the output path
+output_image_path <- "diamonds_edges_illustration.png"
+
+# Edge detecion
+tryCatch({
+  illustrate_edges(plot = p_diamonds, out_path = output_image_path)
+  cat(paste("Edge-detected image saved to:", output_image_path, "\n"))
+}, error = function(e) {
+  cat(paste("Error generating edge illustration:", e$message, "\n"))
+})
+
+# Optionally, display the generated image if the file exists
+if (file.exists(output_image_path)) {
+  knitr::include_graphics(output_image_path)
+} else {
+  cat("Output image not found.")
+}
+```
+
+# Visualize the image using our gg_illustrate
+
+```{r ai-illustration}
+# Make sure your OPENAI_API_KEY is set in .Renviron or pass it directly
+gg_illustrate(
+  plot = output_image_path,
+  themes = "Quality Icons for Fair, Good, Very Good, Premium, Ideal",
+  out_path = "diamond_output.png",
+  size = "1024x1024",
+  openai_api_key = "Your OpenAPI key"
+)
+```
